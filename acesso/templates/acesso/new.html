@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block contente %}
+        <h2>Criar Visitantes</h2>
+    <form method="POST" enctype="multipart/form-data">
+
+        <!-- Security token -->
+        {% csrf_token %}
+
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    <h3>Dados visitante</h3>
+                </div>
+
+                {% if form_visitante.errors %}
+                  <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                    </button>
+                    por favor, verifique errors
+                    {{ form_visitante.erros }}
+                  </div>
+                {% endif %}
+                {{form_visitante}}
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    <h3>Dados endereco</h3>
+                </div>
+                {% if form_endero.erros %}
+                  <div class="alert alert-danger">
+                    <button type="button" class="close" data-dimiss="alert"
+                    arua-hidden="true">
+                    </button>
+                    por favor, verifique erros
+                    {{ form_enderco.erros }}
+                  </div>
+                 {% endif %}
+                 {{form_enderco}} 
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    <h3>Dados Veículo</h3>
+                </div>
+        </div>
+        {% if form_veiculo.erros %}
+         <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert"
+            aria-hidden="true">
+            </button>
+            por favor, verifique erros
+            {{ form_veiculo.erros }}
+         </div>
+         <div class="card-foorter">
+            <input type="submit" value="Salvar" class="btn btn-s, btn-primary">
+            <a href="{% url 'index' %}" class="btn btn-sm btn-sencondary">Voltar</a>
+         </div>
+        </div>     
+    </form>
+{% endblock %}
